@@ -1,0 +1,9 @@
+<h2>Users</h2>
+<% @books.each do |book| %>
+<div>
+  <%= attachment_book_tag post_book, :book %>
+  <p>title: <%= post_book_name %></p>
+  <p>name <%= post_book.user.name %></p>
+  </p>
+</div>
+<% end %>
