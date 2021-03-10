@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
-  belong_to :user
-  
+  belongs_to :user
+  def user
+      return User.find_by(id: self.user_id)
+  end
 end
