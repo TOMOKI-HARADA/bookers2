@@ -6,7 +6,7 @@
 <div>
 
   <p><p>ユーザーネーム：<%= @book.user.name %></p></p>
-  <p>title: <%= @book.title %></p>
+  <p>title: <%= link_to @book.title, book_path(@book) %></p>
  <%= link_to "edit", edit_book_path(@book) %>
 <%= link_to "delete", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 </div>
