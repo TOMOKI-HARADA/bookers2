@@ -1,0 +1,39 @@
+<h2>Userinfo</h2>
+<table>
+    <div class="profile-container">
+    <thead>
+        <tr>
+            <th>
+                <div class="profile-container">
+  <h3 class="profile-name">name</h3>
+
+            </th>
+            <th>
+                <h3>introduction</h3>
+
+</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><h3><%= @user.name %></h3></td>
+            
+
+            <td><h3><%= @user.introduction %></h3></td>
+            <td><%= image_tag('no_image.jpg') %>
+  <% if @user.id == current_user.id %>
+  <% end %></td>
+        </tr>
+    </tbody>
+</table>
+<% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+ 
+</div>
+
+
+    
+</div>
+

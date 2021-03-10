@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :books, only: [:new, :create, :index, :show, :destroy, :edit]
   get "books/:id/edit" => "books#edit"
-  get "books/:id/update" => "books#update"
+  patch "books/:id/" => "books#update"
   post "books/:id/" => "books#create" 
+   delete "books/:id/" => "books#destroy"
 end 
