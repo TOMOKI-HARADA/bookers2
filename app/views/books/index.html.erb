@@ -4,7 +4,7 @@
 <% @books.each do |book| %>
 <div>
 <p><p>name：<%= book.user.name %></p>
-  <p>title:  <%=  link_to book.title, book %></p>
+  <p>title: <%= link_to book.title, book_path(book) %></p>
 <%= link_to "edit", edit_book_path(book) %>
 <%= link_to "show", book_path(book) %>
 </div>
