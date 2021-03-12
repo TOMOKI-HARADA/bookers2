@@ -1,3 +1,10 @@
+<% if flash[:notice] %>
+<p id="notice">
+    <%= flash[:notice] %>
+    </p>
+
+<% end %>
+<%= render 'books/error', books: @books %>
 <h2>NEWBOOK</h2>
 <%= form_with model:@book, local:true do |f| %>
 <h4>title</h4>

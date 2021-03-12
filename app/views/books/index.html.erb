@@ -1,4 +1,4 @@
-
+<%= render 'books/list', books: @books %>
 
 <h2>Books</h2>
 <% @books.each do |book| %>
@@ -9,3 +9,4 @@
 <%= link_to "show", book_path(book) %>
 </div>
 <% end %>
+<%= paginate @books %>

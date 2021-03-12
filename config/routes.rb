@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post "boooks/:id/" => "books#create" 
    delete "books/:id/" => "books#destroy"
  post "users/:id" => "books#new"
+ 
   end

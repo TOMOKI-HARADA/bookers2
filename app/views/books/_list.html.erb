@@ -1,39 +1,23 @@
-<h2>Userinfo</h2>
+
+
+<% if current_user %>
+        <div class="profile-container">
+                <h2>User Info</h2>
+<%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
 <table>
-    <div class="profile-container">
-    <thead>
-        <tr>
-            <th>
-                <div class="profile-container">
-  <h3 class="profile-name">name</h3>
+<thead>
+<tr>
+<th>name:</th>
+<th><h3 class="profile-name"><%= current_user.name %></h3></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>introduction:</td>
+<td><h3 class="profile-introduction"><%= current_user.introduction %></h3></td>
+</tr>
+</tbody>
 
-            </th>
-            <th>
-                <h3>introduction</h3>
-
-</div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><h3><%= @user.name %></h3></td>
-            
-
-            <td><h3><%= @user.introduction %></h3></td>
-            <td><%= image_tag('no_image.jpg') %>
-  <% if @user.id == current_user.id %>
-  <% end %></td>
-        </tr>
-    </tbody>
 </table>
-<% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
- 
-</div>
-
-
-    
-</div>
-
+<p><%= link_to "プロフィール編集", edit_user_path(current_user), class: "pull-right" %></p>
+<% end %>
