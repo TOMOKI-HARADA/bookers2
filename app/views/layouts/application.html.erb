@@ -14,7 +14,9 @@
       <div class="container">
         
         <nav class="nav navbar-left ">
-            <span class="title">Bookers</span>
+            <%= link_to  root_path, class:"btn btn-link" do  %>
+                <span class="glyphicon glyphicon-log-out" > Bookers</span>
+                <% end %>
         </nav>
         <nav class="navbar navbar-expand-md navbar-dark ">
           <ul class="nav navbar-nav navbar-right">
@@ -55,7 +57,7 @@
                 </svg> Home</span>
                 <% end %>
               </li>
-               <li><a class="fas fa-link nav-link text-light" href="/home/about"> About</a></li>
+               <li>
                 <%= link_to home_about_path, class:"btn btn-link" do %>
                 <span class="glyphicon glyphicon-link" > About</span>
                 <% end %>

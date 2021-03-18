@@ -4,20 +4,17 @@
     </p>
 
 <% end %>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-3">
-<%= render 'books/list', books: @books %>
-<% if flash[:notice] %>
-<p id="notice">
-    <%= flash[:notice] %>
-    </p>
-
-<% end %>
-<%= render 'books/error', books: @books %>
- <%= render 'books/new', model: @book %>
-<div class="col-xs-9">
-  	  <table class="table table-sm user-index">
+<div class="container px-5 px-sm-0">
+   <div class="row">
+     <div class="col-md-3">
+       <h2>User info</h2>
+     <%= render 'books/list', books: @books %>
+     <%= render 'books/error', books: @books %>
+     <h2></h2>New book
+     <%= render 'books/new', model: @book %>
+     </div>
+       <div class="col-md-8 offset-md-1">
+         <table class="table table-sm user-index">
 <h2>Users</h2>
 <thead>
           <th>image</th>
@@ -35,8 +32,9 @@
   	  	  <% end %>
   	  	</tbody>
   	  </table>
-  	</div>
-  </div>
+       </div>
+     
+   </div>
 </div>
-</div>
+  
 <%= paginate @users %>

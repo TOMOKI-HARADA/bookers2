@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-
+# before_action :authenticate_user!
+#     before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
  def show
     @newbook = Book.new
     @book = Book.find(params[:id])
@@ -19,8 +20,13 @@ class BooksController < ApplicationController
     flash[:notice]= "You have created book successfully."
   redirect_to book_path(@book.id)
   else
-    render :new
-  end 
+    # @user = current_user
+      # @books = Book.all
+      @user = current_user
+      @books = Book.page(params[:page]).reverse_order
+      render :index
+    # render :new
+  end
   # use_id: @current_user.id
   # @book.user_id = current_user.id
   # @book.save
@@ -53,10 +59,10 @@ end
       redirect_to books_path
     end
   end
-  def search
-@searched_books = Book.search(params[:search])
-  @searched_books = @searched_books.page(params[:page])
-end 
+#   def search
+# @searched_books = Book.search(params[:search])
+#   @searched_books = @searched_books.page(params[:page])
+# end
 
   private
     def book_params
