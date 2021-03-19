@@ -1,8 +1,11 @@
 class BooksController < ApplicationController
-# before_action :authenticate_user!
-#     before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
+ before_action :authenticate_user!
+# before_action :baria_user, only: [:edit, :destroy, :update]
+
  def show
-    @newbook = Book.new
+  # @book = Book.find_by(id: params[:id])
+  #   @user = User.find_by(id: @book.user_id)
+     @book = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
   end
@@ -14,22 +17,19 @@ class BooksController < ApplicationController
   end
 
   def create
-     @book = Book.new(book_params)
-  @book.user_id = current_user.id
-  if  @book.save
-    flash[:notice]= "You have created book successfully."
-  redirect_to book_path(@book.id)
-  else
-    # @user = current_user
-      # @books = Book.all
-      @user = current_user
-      @books = Book.page(params[:page]).reverse_order
-      render :index
-    # render :new
-  end
-  # use_id: @current_user.id
-  # @book.user_id = current_user.id
-  # @book.save
+    @user = current_user
+		@book = Book.new(book_params)
+        @book.user_id = (current_user.id)
+	    if @book.save
+        flash[:notice] = "You have creatad book successfully."
+		redirect_to  book_path(@book.id)
+        # redirect_to "/books/#{@book.id}"
+
+        else
+        @books = Book.page(params[:page]).reverse_order
+        flash[:notice] = ' errors prohibited this obj from being saved:'
+        render "index"
+        end
 end
 
   def edit
@@ -48,7 +48,8 @@ end
       flash[:notice]="Book was successfully updated."
       redirect_to book_path(@book.id)
     else
-      render :edit
+      flash[:notice] = " errors prohibited this obj from being saved:"
+            render :edit
     end
   end
 
@@ -68,4 +69,9 @@ end
     def book_params
       params.require(:book).permit(:title, :body)
     end
+    # def baria_user
+    # unless Book.find(params[:id]).user.id.to_i == current_user.id
+    #     redirect_to books_path(current_user)
+    # end
+
 end
