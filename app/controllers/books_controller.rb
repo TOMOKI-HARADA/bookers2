@@ -5,7 +5,7 @@ class BooksController < ApplicationController
  def show
   # @book = Book.find_by(id: params[:id])
   #   @user = User.find_by(id: @book.user_id)
-     @book = Book.new
+    @book_new = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
   end
@@ -19,18 +19,18 @@ class BooksController < ApplicationController
   def create
     @user = current_user
 		@book = Book.new(book_params)
-        @book.user_id = (current_user.id)
-	    if @book.save
-        flash[:notice] = "You have creatad book successfully."
-		redirect_to  book_path(@book.id)
-        # redirect_to "/books/#{@book.id}"
+    @book.user_id = current_user.id
+    if @book.save
+      flash[:notice] = "You have created book successfully."
+     	redirect_to  book_path(@book.id)
+      # redirect_to "/books/#{@book.id}"
 
-        else
-        @books = Book.page(params[:page]).reverse_order
-        flash[:notice] = ' errors prohibited this obj from being saved:'
-        render "index"
-        end
-end
+    else
+      @books = Book.page(params[:page]).reverse_order
+      flash[:notice] = ' errors prohibited this obj from being saved:'
+      render "index"
+    end
+  end
 
   def edit
     @book = Book.find(params[:id])
@@ -50,6 +50,7 @@ end
     else
       flash[:notice] = " errors prohibited this obj from being saved:"
             render :edit
+
     end
   end
 

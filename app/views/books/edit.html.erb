@@ -1,6 +1,6 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
 <div class="row">
-  <div class="col-md-8 offset-md-4" >
+  <div class="col-md-8 " >
       <h1>Editing Book</h1>
 
 <%= form_with model:@book, local: true do |f| %>
@@ -12,8 +12,8 @@
   <%= f.submit 'Update Book' %>
   <%= link_to "Show", @book, class: "book_#{@book.id}" %>
     <%= link_to "Back", books_path, class: "back" %>
-  
 <% end %>
+  
     </div>
   </div>
 </div>
