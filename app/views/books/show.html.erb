@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'books/list', books: @books %> 
+      <%= render 'books/list', books: @books %>
       <h2>New book</h2>
       <%= form_with model:@book_new, local:true do |f| %>
 
@@ -13,13 +13,13 @@
 <%= f.text_area :body %>
 <%= f.submit 'Create Book' %>
 <% end %>
-     
+
     </div>
     <div class="col-md-8 offset-md-1">
       <h1>Book detail</h1>
      <table class='table table-hover table-inverse'>
        <thead>
-    
+
         <tr>
           <td><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg"%></td>
           <td><%= link_to @user.name, user_path(@user) %></td>
